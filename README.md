@@ -1,6 +1,6 @@
-# README
+# マビノギオン（仮）
 
-いろいろなアレがアレなのでいっそ作ろうかという気を起こした
+『マビノギオン』 (Mabinogion) は、中世のウェールズ語写本より収集した物語を収録した書物。(Wikipediaより引用)
 
 ## Requirement
 
@@ -8,6 +8,7 @@
  - ransack
  - kaminari
  - devise
+ - Vue3
 
 ### DevRequirement
 

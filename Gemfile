@@ -29,6 +29,7 @@ gem 'devise_token_auth'
 gem 'active_model_serializers'
 gem 'kaminari'
 gem 'ransack'
+gem 'public_uid'
 
 group :test, :development do
   gem 'rspec-rails'
