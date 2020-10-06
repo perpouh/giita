@@ -1,0 +1,52 @@
+version: '3.4'
+
+services:
+  db:
+    container_name: 'giita_db'
+    image: mysql:5.7.10
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      TZ: "Asia/Tokyo"
+    ports:
+      - "33006:3306"
+    volumes:
+      - ./containers/mysql_data:/var/lib/mysql
+    command: --innodb-use-native-aio=0
+  web: &app_base
+    container_name: 'giita_web'
+    build:
+      context: .
+      args:
+        ASSETS_PRECOMPILE: 'false'
+    environment:
+      RAILS_ENV: development
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_HOST: db
+      DB_DATABASE: giita_development
+    command: sh -c "rm -f  /app/tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+      # - tmp:/web/app/tmp
+      # - public:/web/app/public
+    links:
+      - db
+    depends_on: 
+      - db
+    ports:
+      - "80:3000"
+  smtp:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+volumes:
+  mysql_data:
+  bundle:
+  tmp:
+  public:
+  clamav:
+    driver: local

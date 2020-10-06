@@ -20,3 +20,11 @@
 ## Contribute
 
 [CONTRIBUTING.md](CONTRIBUTING.md)
+
+### Contributors
+
+<a href="https://github.com/angular/angular-ja/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=perpouh/giita" />
+</a>
+
+Made with [contributors-img](https://contributors-img.web.app).
